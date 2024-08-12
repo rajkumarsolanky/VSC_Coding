@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                background-image: 
+                    linear-gradient(
+                        to top right, #8B5CF6, #EC4899
+                    );
+            }
+            .slider{
+
+            }
+            .item{
+                position: absolute;
+                border-radius: 20px;
+                transition: 0.5s;
+                left: calc(50% - 110px);
+            }
+            .item img {
+                height: 250px;
+                width: 400px;
+                position: relative;
+                justify-items: center;
+                border-radius: 20px;
+            }
+            #prev{
+                position: absolute;
+                top: 40%;
+                color: #fff;
+                background-color: transparent;
+                border: none;
+                font-size: xxx-large;
+                font-family: monospace;
+                font-weight: bold;
+                left: 50px;
+            }
+            #next{    
+                position: absolute;
+                right: 50px;
+                top: 40%;
+                color: #fff;
+                background-color: transparent;
+                border: none;
+                font-size: xxx-large;
+                font-family: monospace;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="slider">
+            <div class="item">
+                <img src="image cover/home1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <button id="next">></button>
+            <button id="prev"><</button>
+        </div>
+    
+        <script>
+            let items = document.querySelectorAll('.slider .item');
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    
+    let active = 3;
+    function loadShow(){
+        let stt = 0;
+        items[active].style.transform = `none`;
+        items[active].style.zIndex = 1;
+        items[active].style.filter = 'none';
+        items[active].style.opacity = 1;
+        for(var i = active + 1; i < items.length; i++){
+            stt++;
+            items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+        stt = 0;
+        for(var i = active - 1; i >= 0; i--){
+            stt++;
+            items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+    }
+    loadShow();
+    next.onclick = function(){
+        active = active + 1 < items.length ? active + 1 : active;
+        loadShow();
+    }
+    prev.onclick = function(){
+        active = active - 1 >= 0 ? active - 1 : active;
+        loadShow();
+    }
+        </script>
+    </body>
+    </html>

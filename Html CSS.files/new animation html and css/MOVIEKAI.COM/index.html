@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="custom.css">
+  <title>MOVIEKAI.com</title>
+  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&display=swap">
+</head>
+<body>
+  <header class="header">
+    <div class="nam">
+      <p>MOVIEKAI.com</p>
+    </div>
+    <div class="row">
+      <input type="search" id="search" placeholder="Search here..." autofocus autocomplete="off" name="text" class="input">
+      <svg fill="#000000" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+        <path d="M790.588 1468.235c-373.722 0-677.647-303.924-677.647-677.647 0-373.722 303.925-677.647 677.647-677.647 373.723 0 677.647 303.925 677.647 677.647 0 373.723-303.924 677.647-677.647 677.647Zm596.781-160.715c120.396-138.692 193.807-319.285 193.807-516.932C1581.176 354.748 1226.428 0 790.588 0S0 354.748 0 790.588s354.748 790.588 790.588 790.588c197.647 0 378.24-73.411 516.932-193.807l516.028 516.142 79.963-79.963-516.142-516.028Z" fill-rule="evenodd"/>
+      </svg>
+    </div>
+  </header>
+  <main>
+    <br>
+    <center>
+      <div class="main">
+        <div class="row" id="movie-box"></div>
+      </div>  
+      <br>
+    </center>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <h2>MOVIEKAI.com</h2>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h2>Contact</h2>
+        <p>Email: info@MOVIEKAI.com</p>
+        <p>Phone: +1 234 567 890</p>
+      </div>
+      <div class="footer-content">
+        <h2>Follow Us</h2>
+        <div class="boko">
+          <a href="#" class="social-link1">
+            <img src="img/instagram.png" alt="Instagram">
+          </a>
+          <a href="#" class="social-link2">
+            <img src="img/github.png" alt="GitHub">
+          </a>
+          <a href="#" class="social-link3">
+            <img src="img/discord.png" alt="Discord">
+          </a>
+          <a href="#" class="social-link4">
+            <img src="img/linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="#" class="social-link5">
+            <img src="img/facebook.png" alt="Facebook">
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="copyright">MOVIEKAI.com &copy; 2024. All Rights Reserved.</p>
+  </footer>
+  <script>
+      const APIURL =
+        "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+    const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+    const SEARCHAPI =
+        "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+    const moiveBox = document.querySelector("#movie-box")
+    const getMovies = async (url) => {
+        try {
+            const response = await fetch(url)
+            const data = await response.json()
+            showMovies(data)
+        } catch (error) {
+            console.error("Failed to fetch movies", error);
+        }
+    }
+    getMovies(APIURL);
+
+    const showMovies = (data) => {
+        moiveBox.innerHTML = "";
+        data.results.forEach(
+            (result) => {
+                const imagePath = result.poster_path === null ? "img/image-missing.png" : IMGPATH + result.poster_path;
+                const box = document.createElement("div")
+                box.classList.add("box")
+                box.innerHTML = `
+                  <figure class="card__thumbnail">
+                    <img src="${imagePath}" alt="${result.original_title}" />
+                  </figure>
+                    <div class="overlay">
+                        <div class="title"> 
+                            <h2>${result.original_title}</h2>
+                            <span>${result.vote_average}</span>
+                        </div>
+                        <h3>Overview:</h3>
+                        <p>${result.overview}</p>
+                    </div>
+                `
+                moiveBox.appendChild(box)
+              }
+          )
+      }
+
+    document.querySelector("#search").addEventListener(
+        "keyup",
+        function (event) {
+            if (event.target.value != "") {
+                getMovies(SEARCHAPI + event.target.value)
+            } else {
+                getMovies(APIURL);
+            }
+        }
+      )
+  </script>
+</body>
+</html>

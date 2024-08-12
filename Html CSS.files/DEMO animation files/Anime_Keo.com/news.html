@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANIME KEO</title>
+  <style>
+  body {
+      background: #1A5976;
+      padding: 0;
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      color: #000;
+  }
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  .header {
+      display: flex;
+      align-items: center;
+      background-color: #1A5276;
+      height: 56px;
+  }
+  
+  .header .logo {
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+  }
+  
+  .header .logo img {
+      width: auto;
+      height: 32px;
+  }
+  
+  .header .logo p {
+      color: #f9f9f9;
+      font-size: medium;
+      margin-bottom: auto;
+  }
+  
+  .header .menu {
+      color: #fff;
+      font-size: 24px;
+      margin-right: 16px;
+      cursor: pointer;
+  }
+  
+  .header .search {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      margin: 0 16px;
+      background-color: #fff;
+      width: 300px;
+      height: 40px;
+      border-radius: 5px;
+      flex-direction: row;
+  }
+  
+  .header .search input {
+      font-size: 16px;
+      all: unset;
+      font: 16px system-ui;
+      color: black;
+      height: 100%;
+      width: 100%;
+      padding: 6px 10px;
+  }
+  
+  .header .search button {
+      width: 40px;
+      height: 30px;
+      color: #fff;
+      cursor: pointer;
+      all: unset;
+      margin-right: 10px;
+  }
+  
+  .header .search a {
+      width: 40px;
+      height: 30px;
+      color: #fff;
+      cursor: pointer;
+      all: unset;
+      margin-right: 10px;
+  }
+  
+  .header .search img {
+      width: 20px;
+      color: #fff;
+      cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+  .example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .example-2 .icon-content {
+    margin: 0 5px;
+    position: relative;
+  }
+  .example-2 .icon-content .tooltip {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: -40px;
+  }
+  .example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #4d4d4d;
+
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .example-2 .icon-content a img {
+    position: relative;
+    z-index: 1;
+    width: 25px;
+    height: 25px;
+  }
+  .example-2 .icon-content a:hover {
+    color: rgb(0, 0, 0);
+  }
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    height: 100%;
+  }
+  .example-2 .icon-content a[data-social="Home"] .filled,
+  .example-2 .icon-content a[data-social="Home"] ~ .tooltip {
+    background-color: #1A5999;
+  }
+  .example-2 .icon-content a[data-social="Menu"] .filled,
+  .example-2 .icon-content a[data-social="Menu"] ~ .tooltip {
+    background-color: #1A5999;
+  }
+  .example-2 .icon-content a[data-social="Profile"] .filled,
+  .example-2 .icon-content a[data-social="Profile"] ~ .tooltip {
+    background-color: #1A5999;
+  }
+  .example-2 .icon-content a[data-social="About"] .filled,
+  .example-2 .icon-content a[data-social="About"] ~ .tooltip {
+    background-color: #1A5999;
+  }
+  
+  footer {
+      background-color: #1A5276;
+      color: black;
+      padding: 20px 0;
+  }
+  
+  .footer-container {
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  .footer-content {
+      text-align: center;
+  }
+  
+  .footer-content h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 8px;
+  }
+  
+  .footer-content p {
+      margin: 5px 0;
+  
+  }
+  
+  .social-icon img {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+  }
+  
+  .footer-content ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  .footer-content ul li {
+      margin: 5px 0;
+  }
+  
+  .footer-content li a {
+      text-decoration: none;
+      color: white;
+  }
+    
+  
+  .copyright {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 10px;
+  }  
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <p>
+        ANIME<img src="images/Logo.png" alt="Anime keo Logo" />KEO.com
+      </p>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search" />
+      <button><img src="images/magnifier.png" alt="Search"></button>
+      <a href="search.com"><img src="images/mic.png" alt="Mic"></a>
+    </div>
+    <nav>
+      <ul>
+        <ul class="example-2">
+          <li class="icon-content">
+            <a
+              data-social="Home"
+              aria-label="Home"
+              href="index.html"
+            >
+              <div class="filled"></div>
+                <img src="images/home.png" alt="">
+            </a>
+            <div class="tooltip">Home</div>
+          </li>
+          <li class="icon-content">
+            <a
+              data-social="Menu"
+              aria-label="Menu"
+              href="showtv.html"
+            >
+              <div class="filled"></div>
+              <img src="images/play.png" alt="">
+            </a>
+            <div class="tooltip">lastest.videos</div>
+          </li>
+          <li class="icon-content">
+            <a
+              data-social="Profile"
+              aria-label="Profile"
+              href="app.html"
+            >
+              <div class="filled"></div>
+              <img src="images/app.png" alt="">
+            </a>
+            <div class="tooltip">App.Download</div>
+          </li>
+          <li class="icon-content">
+            <a
+              data-social="About"
+              aria-label="About"
+              href="profile.html"
+            >
+              <div class="filled"></div>
+              <img src="images/profile.png" alt="">
+            </a>
+            <div class="tooltip">Profile</div>
+          </li>
+        </ul>
+        
+      </ul>
+      </nav>
+  </header>
+  <section class="main">
+   ...
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+          <h2>Contact Us</h2>
+          <p>Email: rajkumarsolinky@yahoo.com</p>
+          <p>Phone: +92 302-1346064</p>
+          <p>Whatsapp: Live Chat</p>
+      </div>
+      <div class="footer-content">
+          <h2>Follow Us</h2>
+          <a href="#" class="social-icon"><img src="images/facebook.png" alt="Facebook"></a>
+          <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+          <a href="#" class="social-icon"><img src="images/instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="footer-content">
+          <h2>Quick Links</h2>
+          <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 AnimeKeo.com. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

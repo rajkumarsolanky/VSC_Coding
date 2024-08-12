@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Player</title>
+	<link rel="stylesheet" href="style.css">
+  <style>
+    .video-container {
+      width: 80%;
+      margin: 40px auto;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-controls {
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border-radius: 10px;
+    }
+    
+    .video-controls button {
+      background-color: #444;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .video-controls button:hover {
+      background-color: #555;
+    }
+    
+    .volume-slider {
+      width: 100px;
+      margin: 10px;
+    }
+    
+    .volume-slider input[type="range"] {
+      width: 100%;
+      height: 20px;
+      margin: 10px;
+    }
+    
+    .video-info {
+      padding: 20px;
+    }
+    
+    .video-info h2 {
+      margin-top: 0;
+    }
+    
+    .video-info p {
+      margin-bottom: 20px;
+    }
+  </style>
+  <script>
+    const video = document.getElementById('video');
+    const playPauseButton = document.getElementById('play-pause');
+    const muteButton = document.getElementById('mute');
+    const fullscreenButton = document.getElementById('fullscreen');
+    const volumeSlider = document.getElementById('volume');
+    
+    playPauseButton.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playPauseButton.classList.remove('play');
+        playPauseButton.classList.add('pause');
+      } else {
+        video.pause();
+        playPauseButton.classList.remove('pause');
+        playPauseButton.classList.add('play');
+      }
+    });
+    
+    muteButton.addEventListener('click', () => {
+      video.muted =!video.muted;
+      if (video.muted) {
+        muteButton.classList.add('muted');
+      } else {
+        muteButton.classList.remove('muted');
+      }
+    });
+    
+    fullscreenButton.addEventListener('click', () => {
+      video.requestFullscreen();
+    });
+    
+    volumeSlider.addEventListener('input', () => {
+      video.volume = volumeSlider.value / 100;
+    });
+  </script>
+</head>
+<body>
+	<div class="video-container">
+		<video id="video" width="100%" height="100%" controls>
+			<source src="video.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+		<div class="video-controls">
+			<button id="play-pause" class="play">Play</button>
+			<button id="mute" class="mute">Mute</button>
+			<button id="fullscreen" class="fullscreen">Fullscreen</button>
+			<div class="volume-slider">
+				<input type="range" id="volume" min="0" max="100" value="50">
+			</div>
+		</div>
+		<div class="video-info">
+			<h2 id="video-title">Video Title</h2>
+			<p id="video-description">Video Description</p>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

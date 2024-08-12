@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+  
+.header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.logo {
+    display: flex;
+    align-items: center;
+}
+  
+.logo img {
+    height: 40px;
+    margin-left: 10px;
+}
+  
+.logo p {
+    margin: 0;
+}
+  
+.logo .anime, .logo .kemo {
+    color: #FFA500;
+}
+  
+.search input {
+    width: 280px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+}
+  
+.search button {
+    width: 40px;
+    height: 30px;
+    background-color: #FFA500;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+  
+.search a {
+    margin-left: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+}
+  
+.search img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+  }
+  
+.sidebar {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    min-width: 200px;
+}
+  
+.link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+  
+.link img {
+    width: 20px;
+    margin-right: 10px;
+    font-size: 24px;
+}
+  
+.content {
+    padding: 20px;
+}
+  
+.tvshows .pic {
+    position: relative;
+    overflow: hidden;
+}
+  
+.tvshows .pic img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+    width: 150px;
+}
+  
+.tvshows .pic:hover img {
+    transform: scale(1.1);
+}
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+  
+.tvshows .pic:hover .overlay {
+    opacity: 1;
+}
+  
+.text {
+    color: white;
+}
+  
+.footer-container {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.footer-content h2 {
+    margin-bottom: 10px;
+}
+  
+.footer-content ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.footer-content li {
+    margin-bottom: 5px;
+}
+  
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+  
+.copyright {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+  

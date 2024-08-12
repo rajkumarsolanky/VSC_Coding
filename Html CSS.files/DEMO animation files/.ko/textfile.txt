@@ -1,0 +1,20 @@
+.toggle .active {
+    background: var(--close;)
+}
+
+.toggle ion-icon {
+    position: absolute;
+    color: va(--white);
+    font-size: 34px;
+    display: none;
+}
+
+.toggle ion-icon.open,
+.toggle .active ion-icon .close {
+    display: block;
+}
+
+.toggle ion-icon .close,
+.toggle .active ion-icon .open {
+    display: none;
+}
